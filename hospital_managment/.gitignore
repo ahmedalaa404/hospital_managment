@@ -1,0 +1,46 @@
+# ==============================
+# Python
+# ==============================
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+*.egg-info/
+*.egg
+
+# ==============================
+# Odoo specific
+# ==============================
+/.odoo*
+/*.log
+*.db
+*.zip
+*.tar.gz
+*.pot
+*.mo
+
+# Add custom addons cache and temporary files
+/.venv/
+*.iml
+.idea/
+.vscode/
+*.tmp
+*.bak
+*.orig
+*.sqlite3
+*.log
+
+# ==============================
+# OS files
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Node / JS / Frontend
+# ==============================
+node_modules/
+npm-debug.log
+yarn-error.log
