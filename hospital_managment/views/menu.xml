@@ -1,0 +1,9 @@
+<odoo>
+
+
+    <menuitem id="hospital_menu_root2"
+              name="hospital2"
+              sequence="0"/>
+
+</odoo>
+

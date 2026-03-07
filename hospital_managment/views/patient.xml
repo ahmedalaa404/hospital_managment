@@ -1,0 +1,13 @@
+<odoo>
+    <record id="actions_hospital_patient" model="ir.actions.act_window">
+        <field name="name">hospital</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="help" type="html">
+            <div class="text-warning">
+                <p>
+                    not have any patient her can make register new patient
+                </p>
+            </div>
+        </field>
+    </record>
+</odoo>
