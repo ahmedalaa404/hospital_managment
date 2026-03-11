@@ -7,6 +7,7 @@
     'summary': 'Hospital Managment',
     'depends': ['base'],
     'data': [
+        'security/ir.model.access.cvs',
         'views/menu.xml',
         'views/patient.xml',
     ],
