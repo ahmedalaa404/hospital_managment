@@ -1,8 +1,9 @@
 <odoo>
 
 
-    <menuitem id="hospital_menu_root2"
-              name="hospital2"
+    <menuitem id="hospital_menu_root"
+              name="hospital"
+              web_icon="hospital_managment,static/description/icon.png"
               sequence="0"/>
 
 </odoo>

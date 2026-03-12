@@ -8,7 +8,8 @@ class Patient(models.Model):
 
     name = fields.Char(string="Patient Name")
     age = fields.Integer(string="age")
+    ref = fields.Char(string="Reference")
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'FeMale'),
-    ],string="age")
+    ],string="gender")

@@ -1,7 +1,55 @@
 <odoo>
+
+    <record id="view_hospital_patient_list" model="ir.ui.view">
+        <field name="name">view of hospital patient list</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="age"/>
+                <field name="ref"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_hospital_patient_form" model="ir.ui.view">
+        <field name="name">view of hospital patient form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="ref"/>
+                        <field name="gender"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_hospital_patient_search" model="ir.ui.view">
+        <field name="name">view of hospital patient search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="['|',('name','ilike',self),('ref','ilike',self)]" string="search with name "/>
+                <field name="name" string="patient name"/>
+                <field name="age"/>
+                <field name="gender"/>
+            </search>
+        </field>
+    </record>
+
+
     <record id="actions_hospital_patient" model="ir.actions.act_window">
         <field name="name">hospital</field>
         <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <div class="text-warning">
                 <p>
@@ -10,4 +58,9 @@
             </div>
         </field>
     </record>
+
+    <menuitem id="patient_menu_item"
+              parent="hospital_menu_root"
+              name="patient"
+              action="actions_hospital_patient"/>
 </odoo>
