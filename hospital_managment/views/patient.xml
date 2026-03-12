@@ -37,11 +37,21 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name" filter_domain="['|',('name','ilike',self),('ref','ilike',self)]" string="search with name "/>
+                <field name="name" filter_domain="['|',('name','ilike',self),('ref','ilike',self)]"
+                       string="search with name "/>
                 <field name="name" string="patient name"/>
                 <field name="age"/>
                 <field name="gender"/>
+                <filter name="filter_with_gender" string="gender with male" domain="[('gender','=','male')]"/>
+                <separator/>
+                <filter name="filter_with_gender" string="gender with Female" domain="[('gender','=','female')]"/>
+                <filter name="filter_age" string="age more 20" domain="[('age','&lt;=',20)]"/>
+                    <group expand="0" string="group_by">
+                        <filter string="group with gender" name="group_with_gender" context="{'group_by':'gender'}"/>
+                    </group>
+
             </search>
+
         </field>
     </record>
 
