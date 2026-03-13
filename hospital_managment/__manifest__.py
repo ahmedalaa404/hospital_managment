@@ -10,6 +10,7 @@
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/patient.xml',
+        'views/female_patient.xml',
     ],
     'description': "",
     'application' : True,

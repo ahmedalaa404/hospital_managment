@@ -6,5 +6,10 @@
               web_icon="hospital_managment,static/description/icon.png"
               sequence="0"/>
 
+    <menuitem id="mnu_patient_item"
+              name="patient"
+              parent="hospital_menu_root"
+              sequence="0"/>
+
 </odoo>
 

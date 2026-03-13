@@ -9,7 +9,8 @@ class Patient(models.Model):
     name = fields.Char(string="Patient Name")
     age = fields.Integer(string="age")
     ref = fields.Char(string="Reference")
+    active = fields.Boolean(string="active")
     gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'FeMale'),
-    ],string="gender")
+    ],string="gender",required=True,default='male')

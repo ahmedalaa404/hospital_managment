@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+        <record id="actions_female_hospital_patient" model="ir.actions.act_window">
+            <field name="name">f-male patient</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'default_gender':'female'}</field>
+            <field name="domain">[('gender','=','female')]</field>
+            <field name="help" type="html">
+                <div class="text-warning">
+                    <p>
+                        not have any f-male patient her can make register new patient
+                    </p>
+                </div>
+            </field>
+        </record>
+
+
+        <menuitem id="menu_female_patient"
+                  parent="mnu_patient_item"
+                  name="f-male patient"
+                  action="actions_female_hospital_patient"
+
+        />
+    </data>
+</odoo>
