@@ -6,6 +6,9 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="patient_id"/>
+                <field name="appointment_time"/>
+                <field name="booking_date"/>
             </tree>
         </field>
     </record>
@@ -19,41 +22,20 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="patient_id"/>
+                        <field name="appointment_time"/>
+                        <field name="booking_date"/>
                     </group>
                 </sheet>
 
                 <div class="oe_chatter">
-                        <field name="message_follower_ids"/>
-                        <field name="activity_ids"/>
-                        <field name="message_ids"/>
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
 
 
             </form>
-        </field>
-    </record>
-
-
-    <record id="view_hospital_appointments_search" model="ir.ui.view">
-        <field name="name">view of hospital appointments search</field>
-        <field name="model">hospital.appointments</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="name" filter_domain="['|',('name','ilike',self),('ref','ilike',self)]"
-                       string="search with name "/>
-                <field name="name" string="appointments name"/>
-                <field name="age"/>
-                <field name="gender"/>
-                <filter name="filter_with_gender_male" string="gender with male" domain="[('gender','=','male')]"/>
-                <separator/>
-                <filter name="filter_with_gender_female" string="gender with Female" domain="[('gender','=','female')]"/>
-                <filter name="filter_age" string="age more 20" domain="[('age','&lt;=',20)]"/>
-                <group expand="0" string="group_by">
-                    <filter string="group with gender" name="group_with_gender" context="{'group_by':'gender'}"/>
-                </group>
-
-            </search>
-
         </field>
     </record>
 

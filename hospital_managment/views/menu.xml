@@ -13,7 +13,7 @@
 
 
     <menuitem id="mnu_appointments_item"
-              name="patient"
+              name="appointments"
               parent="hospital_menu_root"
               sequence="0"/>
 
