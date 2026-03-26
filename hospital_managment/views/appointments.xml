@@ -29,6 +29,29 @@
                         <field name="appointment_time"/>
                         <field name="booking_date"/>
                     </group>
+
+                    <notebook>
+                        <page string="prescription" name="prescription">
+                            <group>
+                                <field name="appointment_time"/>
+                            </group>
+                            <notebook>
+                                <page string="prescription" name="test_notebooks">
+                                    <group>
+                                        <field name="gender"/>
+
+                                    </group>
+                                </page>
+                            </notebook>
+                        </page>
+                    </notebook>
+
+                    <notebook>
+                        <page string="prescription" name="patients">
+                            <field name="gender"/>
+
+                        </page>
+                    </notebook>
                 </sheet>
 
                 <div class="oe_chatter">

@@ -9,6 +9,7 @@
                 <field name="age"/>
                 <field name="active" invisible="1"/>
                 <field name="ref"/>
+                <field name="date_of_birth"/>
                 <field name="gender"/>
             </tree>
         </field>
@@ -25,6 +26,8 @@
                         <field name="name"/>
                         <field name="age"/>
                         <field name="ref"/>
+                         <field name="date_of_birth"/>
+                         <field name="active"/>
                         <field name="active" invisible="1"/>
                         <field name="gender"/>
                     </group>
