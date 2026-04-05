@@ -10,7 +10,7 @@ class Patient(models.Model):
 
     name = fields.Char(string="Patient Name")
     age = fields.Integer(string="age", compute='_compute_calc_age', store=True)
-    ref = fields.Char(string="Reference")
+    ref = fields.Char(string="Reference",help="This refers to the patient is identity")
     active = fields.Boolean(string="active")
     gender = fields.Selection([
         ('male', 'Male'),
