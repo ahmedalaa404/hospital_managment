@@ -8,6 +8,14 @@
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="gender"/>
+<!--               not open in chat allow to send message -->
+
+                <field name="doctor_id" widget="many2one_avatar"/>
+
+<!--                open in chat allow to send message -->
+                <field name="doctor_id" widget="many2one_avatar_user"/>
+
+
 
                 <field name="appointment_time"/>
                 <field name="booking_date"/>
@@ -28,6 +36,7 @@
                         <field name="patient_id"/>
                         <field name="gender"/>
                         <field name="appointment_time"/>
+                        <field name="doctor_id"/>
                         <field name="booking_date"/>
 
                         <button name="action_test" string="test rainbow" type="object"/>

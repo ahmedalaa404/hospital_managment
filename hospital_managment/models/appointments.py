@@ -10,6 +10,8 @@ class Appointments(models.Model):
     gender = fields.Selection(related='patient_id.gender',string="Gender",readonly=False)
     appointment_time=fields.Datetime(string="Appointment Time",default=fields.Datetime.now,tracking=1)
     booking_date=fields.Date(string="Booking Date",tracking=1,default=fields.Date.context_today)
+    doctor_id=fields.Many2one('res.users',string="Doctor",tracking=1)
+
 
 
     def action_test(self):
