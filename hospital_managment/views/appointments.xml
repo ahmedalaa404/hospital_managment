@@ -4,7 +4,7 @@
         <field name="name">view of hospital appointments list</field>
         <field name="model">hospital.appointments</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree multi_edit="1" sample="1">
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="gender"/>
@@ -29,6 +29,14 @@
         <field name="model">hospital.appointments</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="status" widget="statusbar" options="{'clickable':true}"/>
+                    <button type="object" name="set_draft" string="draft" state="process,cancel"/>
+                    <button type="object" name="set_in_process" string="process" state="draft"/>
+                    <button type="object" name="set_done" string="Done" state="process"/>
+                    <button type="object" name="set_cancel" string="cancel" state="in_process"/>
+
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
