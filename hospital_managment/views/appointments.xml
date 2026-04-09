@@ -31,14 +31,17 @@
             <form>
                 <header>
                     <field name="status" widget="statusbar" options="{'clickable':true}"/>
-                    <button type="object" name="set_draft" string="draft" state="process,cancel"/>
-                    <button type="object" name="set_in_process" string="process" state="draft"/>
-                    <button type="object" name="set_done" string="Done" state="process"/>
-                    <button type="object" name="set_cancel" string="cancel" state="in_process"/>
+
+                    <button data-hotkey="v" type="object" name="set_draft" string="draft" statusbar_visible="in_process,cancel"/>
+                    <button data-hotkey="p" type="object" name="set_in_process" string="process" states="draft"/>
+                    <button data-hotkey="d" type="object" name="set_done" string="Done" states="in_process"/>
+                    <button data-hotkey="c" type="object" name="set_cancel" string="cancel" states="in_process"/>
+                    <field name="priority" widget="priority"/>
 
                 </header>
                 <sheet>
                     <group>
+
                         <field name="name"/>
                         <field name="patient_id"/>
                         <field name="gender"/>

@@ -52,3 +52,9 @@ class Appointments(models.Model):
     def set_done(self):
         for rec in self:
             rec.status = 'done'
+
+class AppointmentsPharmacy(models.Model):
+    _name = 'hospital.appointments.pharmacy'
+    _description = 'Appointments Pharmacy'
+
+    name=fields.Char(string="Name", tracking=1)
