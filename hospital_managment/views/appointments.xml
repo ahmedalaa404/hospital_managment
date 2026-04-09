@@ -32,10 +32,10 @@
                 <header>
                     <field name="status" widget="statusbar" options="{'clickable':true}"/>
 
-                    <button data-hotkey="v" type="object" name="set_draft" string="draft" statusbar_visible="in_process,cancel"/>
-                    <button data-hotkey="p" type="object" name="set_in_process" string="process" states="draft"/>
-                    <button data-hotkey="d" type="object" name="set_done" string="Done" states="in_process"/>
-                    <button data-hotkey="c" type="object" name="set_cancel" string="cancel" states="in_process"/>
+                    <button data-hotkey="v" type="object" name="set_draft" string="draft"/>
+                    <button data-hotkey="p" type="object" name="set_in_process" string="process"/>
+                    <button data-hotkey="d" type="object" name="set_done" string="Done"/>
+                    <button data-hotkey="c" type="object" name="set_cancel" string="cancel"/>
                     <field name="priority" widget="priority"/>
 
                 </header>
@@ -58,9 +58,24 @@
                                 <field name="appointment_time"/>
                             </group>
                             <notebook>
-                                <page string="prescription" name="test_notebooks">
+                                <page string="pharmacy" name="pharmacy">
                                     <group>
-                                        <field name="gender"/>
+                                        <field name="hospital_appointments_pharmacy_lines_ids">
+<!--                                            <tree>-->
+<!--                                                <field name="name"/>-->
+<!--                                                <field name="product_id"/>-->
+<!--                                                <field name="qty"/>-->
+<!--                                                <field name="price_unite"/>-->
+<!--                                            </tree>-->
+
+<!--                                            <form>-->
+<!--                                                <field name="name"/>-->
+<!--                                                <field name="product_id"/>-->
+<!--                                                <field name="qty"/>-->
+<!--                                                <field name="price_unite"/>-->
+<!--                                            </form>-->
+
+                                        </field>
 
                                     </group>
                                 </page>

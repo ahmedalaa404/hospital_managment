@@ -12,6 +12,7 @@ class Appointments(models.Model):
     appointment_time = fields.Datetime(string="Appointment Time", default=fields.Datetime.now, tracking=1)
     booking_date = fields.Date(string="Booking Date", tracking=1, default=fields.Date.context_today)
     doctor_id = fields.Many2one('res.users', string="Doctor", tracking=1)
+    hospital_appointments_pharmacy_lines_ids= fields.One2many('hospital.appointments.pharmacy.lines','appointments_id')
     status = fields.Selection(
         [('draft', 'Draft'),
          ('in_process', 'In-Process'),
@@ -53,8 +54,12 @@ class Appointments(models.Model):
         for rec in self:
             rec.status = 'done'
 
-class AppointmentsPharmacy(models.Model):
-    _name = 'hospital.appointments.pharmacy'
+class AppointmentsPharmacyLines(models.Model):
+    _name = 'hospital.appointments.pharmacy.lines'
     _description = 'Appointments Pharmacy'
 
-    name=fields.Char(string="Name", tracking=1)
+    name=fields.Char(string="Name")
+    product_id = fields.Many2one('product.product')
+    appointments_id = fields.Many2one('hospital.appointments',string="Appointments")
+    qty=fields.Integer()
+    price_unite=fields.Float(string="Unite Price")
