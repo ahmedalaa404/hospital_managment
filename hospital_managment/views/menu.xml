@@ -17,5 +17,11 @@
               parent="hospital_menu_root"
               sequence="0"/>
 
+
+    <menuitem id="mnu_tag_item"
+              name="tags"
+              parent="hospital_menu_root"
+              sequence="0"/>
+
 </odoo>
 

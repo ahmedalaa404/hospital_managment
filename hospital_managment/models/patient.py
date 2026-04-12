@@ -17,6 +17,10 @@ class Patient(models.Model):
         ('female', 'FeMale'),
     ], string="gender", required=True, default='male')
     date_of_birth = fields.Date(string="Date of Birth")
+    color=fields.Integer(string="Color")
+    color2=fields.Char(string="Color2")
+
+    tag_ids=fields.Many2many('hospital.patient.tag')
 
     @api.depends('date_of_birth')
     def _compute_calc_age(self):

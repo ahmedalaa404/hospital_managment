@@ -1,0 +1,50 @@
+<odoo>
+
+    <record id="view_hospital_patient_tag_list" model="ir.ui.view">
+        <field name="name">view of hospital patient tag list</field>
+        <field name="model">hospital.patient.tag</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+                <field name="color_Picker2" widget="color"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_hospital_patient_tag_form" model="ir.ui.view">
+        <field name="name">view of hospital patient tag form</field>
+        <field name="model">hospital.patient.tag</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="color" widget="color_picker"/>
+                        <field name="color_Picker2" widget="color"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="actions_hospital_patient_tag" model="ir.actions.act_window">
+        <field name="name">hospital</field>
+        <field name="res_model">hospital.patient.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <div class="text-warning">
+                <p>
+                    not have any tag her can make register new tag
+                </p>
+            </div>
+        </field>
+    </record>
+
+    <menuitem id="patient_tag_menu_item"
+              parent="mnu_tag_item"
+              name="tag"
+              action="actions_hospital_patient_tag"/>
+</odoo>

@@ -28,6 +28,10 @@ class Appointments(models.Model):
             ('2','height')
         ]
     )
+    Image=fields.Image(string="image" )
+
+
+    hide_from_child=fields.Boolean(string="Hide from Child",default=False)
 
     def action_test(self):
         return {

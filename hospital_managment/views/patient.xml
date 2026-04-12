@@ -7,6 +7,10 @@
             <tree>
                 <field name="name"/>
                 <field name="age"/>
+                <field name="color" widget="color_picker"/>
+                <field name="color2" widget="color"/>
+                <field name="tag_ids" widget="many2many_tags" options="{
+                            'color_field':'color'}"/>
                 <field name="active" invisible="1"/>
                 <field name="ref"/>
                 <field name="date_of_birth"/>
@@ -23,20 +27,31 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="age"/>
-                        <field name="ref"/>
-                         <field name="date_of_birth"/>
-                         <field name="active"/>
-                        <field name="active" invisible="1"/>
-                        <field name="gender"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="color2" widget="color"/>
+                            <field name="ref"/>
+                            <field name="date_of_birth"/>
+                            <field name="active"/>
+                            <field name="active" invisible="1"/>
+                            <field name="gender"/>
+                        </group>
+
+                        <group>
+                            <field name="tag_ids" widget="many2many_tags" options="{
+                            'color_field':'color'}"/>
+                        </group>
+
+
                     </group>
                 </sheet>
 
                 <div class="oe_chatter">
-                        <field name="message_follower_ids"/>
-                        <field name="activity_ids"/>
-                        <field name="message_ids"/>
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
 
 
@@ -57,7 +72,8 @@
                 <field name="gender"/>
                 <filter name="filter_with_gender_male" string="gender with male" domain="[('gender','=','male')]"/>
                 <separator/>
-                <filter name="filter_with_gender_female" string="gender with Female" domain="[('gender','=','female')]"/>
+                <filter name="filter_with_gender_female" string="gender with Female"
+                        domain="[('gender','=','female')]"/>
                 <filter name="filter_age" string="age more 20" domain="[('age','&lt;=',20)]"/>
                 <group expand="0" string="group_by">
                     <filter string="group with gender" name="group_with_gender" context="{'group_by':'gender'}"/>
