@@ -20,6 +20,7 @@ class Appointments(models.Model):
          ('cancel', 'Cancel'),
          ], default='draft',
     )
+    Prescription=fields.Html()
 
     priority=fields.Selection(
         [
