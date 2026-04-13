@@ -36,6 +36,11 @@
                     <button data-hotkey="p" type="object" name="set_in_process" string="process"/>
                     <button data-hotkey="d" type="object" name="set_done" string="Done"/>
                     <button data-hotkey="c" type="object" name="set_cancel" string="cancel"/>
+                    <button data-hotkey="cg" type="action"
+                            name="%(hospital_managment.action_cancel_appointment_wizard)d"
+                            string="cancel appointments"/>
+                    <button type="object" name="cancel_appointments"
+                            string="cancel appointments with function"/>
                     <field name="priority" widget="priority"/>
 
                 </header>

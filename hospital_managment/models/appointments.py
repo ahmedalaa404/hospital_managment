@@ -59,6 +59,12 @@ class Appointments(models.Model):
         for rec in self:
             rec.status = 'done'
 
+
+    def cancel_appointments(self):
+        print(self.env.ref('hospital_managment.action_cancel_appointment_wizard'))
+        action=self.env.ref('hospital_managment.action_cancel_appointment_wizard').read()[0]
+        return action
+
 class AppointmentsPharmacyLines(models.Model):
     _name = 'hospital.appointments.pharmacy.lines'
     _description = 'Appointments Pharmacy'
