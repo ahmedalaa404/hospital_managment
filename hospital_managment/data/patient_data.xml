@@ -7,9 +7,5 @@
             <field name="ref">Ref-202</field>
             <field name="active">True</field>
         </record>
-
-
     </data>
-
-
 </odoo>
