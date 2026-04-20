@@ -1,10 +1,14 @@
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class Appointments(models.Model):
     _name = 'hospital.appointments'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Appointments'
+    _rec_name='gender'
+
+
+
 
     name = fields.Char(string="Name", tracking=1)
     patient_id = fields.Many2one('hospital.patient')

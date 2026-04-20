@@ -43,3 +43,12 @@ class Patient(models.Model):
             else:
                 rec.age = 0
 
+
+    def name_get(self):
+        patients_name=[]
+        for rec in self:
+            patients_name.append((rec.id,rec.name+rec.ref))
+
+        return patients_name
+
+
