@@ -1,6 +1,5 @@
 import datetime
-
-from odoo import api, fields, models, _
+from odoo import api, fields, models,_
 
 
 class Patient(models.Model):
@@ -50,5 +49,11 @@ class Patient(models.Model):
             patients_name.append((rec.id,rec.name+rec.ref))
 
         return patients_name
+
+
+
+    def default_get(self, fields_list):
+        print(fields_list)
+        return super(Patient,self).default_get(fields_list)
 
 

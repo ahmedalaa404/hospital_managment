@@ -99,8 +99,19 @@
         </field>
     </record>
 
-    <menuitem id="patient_menu_item"
-              parent="mnu_patient_item"
-              name="patient"
-              action="actions_hospital_patient"/>
+
+    <menuitem id="patient_menu_root" name="Patient_root" parent="mnu_patient_item">
+        <menuitem id="patient_menu_item"
+                  name="patient_Sub_menu">
+            <menuitem
+                    id="patient_menu"
+                    name="patient_menu"
+                    string="patient"
+                    action="actions_hospital_patient"/>
+
+        </menuitem>
+
+    </menuitem>
+
+
 </odoo>
