@@ -1,34 +1,36 @@
 <odoo>
 
+    <data>
 
-    <menuitem id="hospital_menu_root"
-              name="hospital"
-              web_icon="hospital_managment,static/description/icon.png"
-              sequence="0"/>
+        <menuitem id="hospital_menu_root"
+                  name="hospital"
+                  web_icon="hospital_managment,static/description/icon.png"
+                  sequence="0"/>
 
-    <menuitem id="mnu_patient_item"
-              name="patient"
-              parent="hospital_menu_root"
-              sequence="0"/>
-
-
-    <menuitem id="mnu_appointments_item"
-              name="appointments"
-              parent="hospital_menu_root"
-              sequence="0"/>
+        <menuitem id="mnu_patient_item"
+                  name="patient"
+                  parent="hospital_menu_root"
+                  sequence="0"/>
 
 
-    <menuitem id="mnu_tag_item"
-              name="tags"
-              parent="hospital_menu_root"
-              sequence="0"/>
+        <menuitem id="mnu_appointments_item"
+                  name="appointments"
+                  parent="hospital_menu_root"
+                  sequence="0"/>
 
 
-    <menuitem id="mnu_hospital_cancel_appointment"
-              name="cancel appointments"
-              parent="hospital_menu_root"
-              action="action_cancel_appointment_wizard"
-              sequence="10"/>
+        <menuitem id="mnu_tag_item"
+                  name="tags"
+                  parent="hospital_menu_root"
+                  sequence="0"/>
+
+
+        <menuitem id="mnu_hospital_cancel_appointment"
+                  name="cancel appointments"
+                  parent="hospital_menu_root"
+                  action="action_cancel_appointment_wizard"
+                  sequence="10"/>
+    </data>
 
 </odoo>
 

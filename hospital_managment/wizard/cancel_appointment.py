@@ -1,4 +1,5 @@
-from odoo import fields, models, api
+from odoo import fields, models, api,_
+from odoo.exceptions import ValidationError
 
 
 class HospitalCancelAppointmentWizard(models.TransientModel):
@@ -17,4 +18,8 @@ class HospitalCancelAppointmentWizard(models.TransientModel):
     reason = fields.Char(string='Reason')
 
     def save(self):
-        pass;
+        print(self.appointment_id.booking_date)
+        print(fields.Date.today().today())
+        if self.appointment_id.booking_date== fields.Date.today().today():
+            raise ValidationError(_("can`t remove any record from db in the same day"))
+
