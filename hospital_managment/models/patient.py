@@ -1,5 +1,6 @@
 import datetime
 from odoo import api, fields, models,_
+from odoo.exceptions import ValidationError
 
 
 class Patient(models.Model):
@@ -57,3 +58,15 @@ class Patient(models.Model):
         return super(Patient,self).default_get(fields_list)
 
 
+    @api.constrains('date_of_birth')
+    def _check_date_of_birth(self):
+        for rec in self:
+            if rec.date_of_birth and rec.date_of_birth>fields.Date.today() and rec.date_of_birth>fields.Date.today():
+                raise ValidationError(_("The Enter data is Not acceptable"))
+
+
+    @api.model
+    def default_get(self, fields_list):
+        print(self)
+        print(fields_list)
+        return super().default_get(fields_list)
