@@ -11,9 +11,7 @@ class HospitalPatientTag(models.Model):
     sequence = fields.Integer(default=0)
     def copy(self, default=None):
         default = dict(default or {})
-
         default.setdefault('name', f'{self.name}-(copy)')
-
         return super().copy(default)
 
     _sql_constraints = [

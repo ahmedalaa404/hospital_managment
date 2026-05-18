@@ -1,4 +1,5 @@
-from odoo import fields, models, api
+from odoo import fields, models, api,_
+from odoo.exceptions import ValidationError
 
 
 class Appointments(models.Model):
@@ -38,6 +39,12 @@ class Appointments(models.Model):
 
     hide_from_child=fields.Boolean(string="Hide from Child",default=False)
 
+
+    def unlink(self):
+        if self.status=='done':
+            raise ValidationError(_("you can`t do it , state is done "))
+        return super().unlink()
+
     def action_test(self):
         return {
             'effect': {
@@ -68,9 +75,9 @@ class Appointments(models.Model):
         print(self.env.ref('hospital_managment.action_cancel_appointment_wizard'))
         action=self.env.ref('hospital_managment.action_cancel_appointment_wizard').read()[0]
         action['context']={'default_appointment_id':self.id,'hide_appointment_id':1}
-
-        print(action)
         return action
+    
+    
 
 class AppointmentsPharmacyLines(models.Model):
     _name = 'hospital.appointments.pharmacy.lines'
