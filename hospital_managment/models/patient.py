@@ -21,7 +21,15 @@ class Patient(models.Model):
     color2=fields.Char(string="Color2")
 
     tag_ids=fields.Many2many('hospital.patient.tag')
-    
+
+    appointments_ids=fields.One2many('hospital.patient.appointment', 'patient_id', string="Appointments")
+    appointments_count=fields.Integer(string="Appointments Count",compute="_compute_appointments_count",store=True)
+
+    @api.depends('appointments_ids')
+    def _compute_appointments_count(self):
+        for rec in self:
+            rec.appointments_count=self.env['hospital.appointments'].search_count(
+                [('patient_id','=',rec.id)])
     @api.model
     def create(self, vals_list):
         vals_list['ref']=self.env['ir.sequence'].next_by_code('sequence.patient')
