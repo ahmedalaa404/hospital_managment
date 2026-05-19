@@ -22,7 +22,7 @@ class Patient(models.Model):
 
     tag_ids=fields.Many2many('hospital.patient.tag')
 
-    appointments_ids=fields.One2many('hospital.patient.appointment', 'patient_id', string="Appointments")
+    appointments_ids=fields.One2many('hospital.appointments', 'patient_id', string="Appointments")
     appointments_count=fields.Integer(string="Appointments Count",compute="_compute_appointments_count",store=True)
 
     @api.depends('appointments_ids')
@@ -55,7 +55,7 @@ class Patient(models.Model):
     def name_get(self):
         patients_name=[]
         for rec in self:
-            patients_name.append((rec.id,rec.name+rec.ref))
+            patients_name.append((rec.id,rec.name+" / "+rec.ref))
 
         return patients_name
 
