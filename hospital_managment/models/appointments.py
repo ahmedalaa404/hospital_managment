@@ -77,7 +77,8 @@ class Appointments(models.Model):
         action=self.env.ref('hospital_managment.action_cancel_appointment_wizard').read()[0]
         action['context']={'default_appointment_id':self.id,'hide_appointment_id':1}
         return action
-    
+
+
     
 
 class AppointmentsPharmacyLines(models.Model):

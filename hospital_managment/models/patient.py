@@ -99,3 +99,7 @@ class Patient(models.Model):
         for rec in self:
             if rec.appointments_ids:
                 raise ValidationError(_("U Can`t delete patient if have appointments"))
+
+    def action_appear_group_by(self):
+            for rec in self:
+              print(rec)

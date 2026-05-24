@@ -23,6 +23,12 @@
                     <field name="booking_date"/>
                     <field name="activity_ids" widget="list_activity"/>
                     <button type="object" name="set_done" string="set done"/>
+
+                    <groupby name="patient_id">
+                        <button type="object" class="oe_highlight"
+                                string="click me "
+                                name="action_appear_group_by" />
+                    </groupby>
                 </tree>
             </field>
         </record>
