@@ -92,3 +92,10 @@ class Patient(models.Model):
         print(self)
         print(fields_list)
         return super().default_get(fields_list)
+
+
+    @api.ondelete(at_uninstall=False)
+    def check_appointments(self):
+        for rec in self:
+            if rec.appointments_ids:
+                raise ValidationError(_("U Can`t delete patient if have appointments"))

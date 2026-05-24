@@ -6,6 +6,7 @@
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
                 <tree export_xlsx="0">
+
                     <field name="name"/>
                     <field name="age"/>
                     <field name="color" widget="color_picker"/>
