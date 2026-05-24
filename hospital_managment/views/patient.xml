@@ -47,6 +47,16 @@
 
 
                         </group>
+
+                        <group>
+                            <group>
+                                <field name="parent" attrs="{'invisible':[('age','>',20),('gender','=','male')]}"/>
+<!--                                attrs="{'invisible':['|',('age','>',20),('gender','=','male')]}"-->
+                                <field name="partner_name" attrs="{'readonly':[('marital_status','!=','married')]}"/>
+                                <field name="marital_status"/>
+                            </group>
+                        </group>
+
                     </sheet>
 
                     <div class="oe_chatter">

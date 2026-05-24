@@ -25,6 +25,19 @@ class Patient(models.Model):
     appointments_ids=fields.One2many('hospital.appointments', 'patient_id', string="Appointments")
     appointments_count=fields.Integer(string="Appointments Count",compute="_compute_appointments_count",store=True)
 
+
+    parent =fields.Char(string="Parent Patient")
+    partner_name =fields.Char(string="partner name")
+    marital_status = fields.Selection([
+        ('single', 'Single'),
+        ('married', 'Married'),
+        ('divorced', 'Divorced'),
+        ('widowed', 'Widowed'),
+    ], string="Marital Status")
+
+
+
+
     @api.depends('appointments_ids')
     def _compute_appointments_count(self):
         for rec in self:
@@ -55,7 +68,8 @@ class Patient(models.Model):
     def name_get(self):
         patients_name=[]
         for rec in self:
-            patients_name.append((rec.id,rec.name+" / "+rec.ref))
+            name=rec.name+" "+rec.ref
+            patients_name.append((rec.id,name))
 
         return patients_name
 
