@@ -7,6 +7,12 @@
                   web_icon="hospital_managment,static/description/icon.png"
                   sequence="0"/>
 
+
+        <menuitem id="configuration_menu_root"
+                  name="configuration"
+                  parent="hospital_menu_root"
+                  sequence="1"/>
+
         <menuitem id="mnu_patient_item"
                   name="patient"
                   parent="hospital_menu_root"

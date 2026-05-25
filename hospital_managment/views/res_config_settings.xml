@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record>
+            
+        </record>
+
+
+
+        <menuitem
+                id="hospital_config_settings_menu"
+                parent="configuration_menu_root"
+                name="settings"
+        />
+    </data>
+</odoo>
