@@ -20,6 +20,9 @@ class HospitalCancelAppointmentWizard(models.TransientModel):
     def save(self):
         print(self.appointment_id.booking_date)
         print(fields.Date.today().today())
-        if self.appointment_id.booking_date== fields.Date.today().today():
-            raise ValidationError(_("can`t remove any record from db in the same day"))
-
+        cancel_day=self.env['ir.config_parameter'].get_param('hospital_managment.cancel_days')
+        print("cancel_day",cancel_day)
+        #
+        # if self.appointment_id.booking_date== fields.Date.today().today():
+        #     raise ValidationError(_("can`t remove any record from db in the same day"))
+        #

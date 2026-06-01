@@ -9,7 +9,7 @@
                         <button type="object" name="set_done" string="set dones of records"/>
                     </header>
                     <field name="name"/>
-                    <field name="patient_id"/>
+                    <field name="patient_id" widget="selection"/>
                     <field name="ref"/>
                     <field name="gender"/>
                     <!--               not open in chat allow to send message -->

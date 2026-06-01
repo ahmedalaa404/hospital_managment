@@ -12,7 +12,9 @@
                     <field name="color" widget="color_picker"/>
                     <field name="color2" widget="color"/>
                     <field name="tag_ids" widget="many2many_tags" options="{
-                            'color_field':'color'}"/>
+                                                'color_field':'color'}"/>
+
+
                     <field name="active" invisible="1"/>
                     <field name="ref"/>
                     <field name="date_of_birth"/>
@@ -52,9 +54,11 @@
                         <group>
                             <group>
                                 <field name="parent" attrs="{'invisible':[('age','>',20),('gender','=','male')]}"/>
-<!--                                attrs="{'invisible':['|',('age','>',20),('gender','=','male')]}"-->
+                                <!--                                attrs="{'invisible':['|',('age','>',20),('gender','=','male')]}"-->
                                 <field name="partner_name" attrs="{'readonly':[('marital_status','!=','married')]}"/>
                                 <field name="marital_status"/>
+<!--                                <field name="tag_ids" widget="many2many_checkboxes"/>-->
+
                             </group>
                         </group>
 
@@ -87,7 +91,7 @@
                     <filter name="filter_with_gender_female" string="gender with Female"
                             domain="[('gender','=','female')]"/>
 
-<!--                    <filter name="filter_age" string="age more 20" domain="[('age','&lt;=',20)]"/>-->
+                    <!--                    <filter name="filter_age" string="age more 20" domain="[('age','&lt;=',20)]"/>-->
                     <group expand="0" string="group_by">
 
                         <filter string="group with gender" name="group_with_gender" context="{'group_by':'gender'}"/>
