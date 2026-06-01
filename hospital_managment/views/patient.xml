@@ -38,7 +38,7 @@
                                 <field name="date_of_birth"/>
                                 <field name="active"/>
                                 <field name="active" invisible="1"/>
-                                <field name="gender"/>
+                                <field name="gender" widget="radio"/>
                             </group>
 
                             <group>
@@ -86,8 +86,10 @@
                     <separator/>
                     <filter name="filter_with_gender_female" string="gender with Female"
                             domain="[('gender','=','female')]"/>
-                    <filter name="filter_age" string="age more 20" domain="[('age','&lt;=',20)]"/>
+
+<!--                    <filter name="filter_age" string="age more 20" domain="[('age','&lt;=',20)]"/>-->
                     <group expand="0" string="group_by">
+
                         <filter string="group with gender" name="group_with_gender" context="{'group_by':'gender'}"/>
                     </group>
 
