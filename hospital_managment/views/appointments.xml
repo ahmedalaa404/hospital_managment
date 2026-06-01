@@ -10,6 +10,7 @@
                     </header>
                     <field name="name"/>
                     <field name="patient_id"/>
+                    <field name="ref"/>
                     <field name="gender"/>
                     <!--               not open in chat allow to send message -->
 
@@ -27,7 +28,7 @@
                     <groupby name="patient_id">
                         <button type="object" class="oe_highlight"
                                 string="click me "
-                                name="action_appear_group_by" />
+                                name="action_appear_group_by"/>
                     </groupby>
                 </tree>
             </field>
@@ -67,7 +68,7 @@
                             <field name="name"/>
                             <field name="patient_id"/>
                             <field name="gender"/>
-
+                            <field name="ref"/>
                             <field name="appointment_time"/>
                             <field name="hide_from_child" widget="boolean_toggle"/>
                             <field name="doctor_id" widget="many2one_avatar"/>
