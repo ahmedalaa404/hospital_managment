@@ -66,6 +66,7 @@
 
                             <button name="action_test" string="test rainbow" type="object"/>
                             <field name="name"/>
+                            <field name="operation_id"/>
                             <field name="patient_id"/>
                             <field name="gender"/>
                             <field name="ref"/>

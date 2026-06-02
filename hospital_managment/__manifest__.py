@@ -19,7 +19,8 @@
         'views/female_patient.xml',
         'views/appointments.xml',
         'views/tag.xml',
-        'views/res_config.xml'
+        'views/res_config.xml',
+        'views/operation.xml'
 
     ],
     'description': "",

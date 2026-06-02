@@ -37,6 +37,7 @@ class Appointments(models.Model):
         ]
     )
     Image=fields.Image(string="image" )
+    operation_id=fields.Many2one('operation.operation')
 
 
     hide_from_child=fields.Boolean(string="Hide from Child",default=False)
