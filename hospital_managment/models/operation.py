@@ -9,3 +9,9 @@ class Operation(models.Model):
 
     doctor_id=fields.Many2one('res.users',string='Doctor')
     ref=fields.Char()
+    operation_name=fields.Char()
+
+
+    @api.model
+    def name_create(self, name):
+        return self.create({'operation_name': name}).name_get()[0]
