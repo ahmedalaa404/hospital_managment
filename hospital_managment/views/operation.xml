@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree string="Operations">
                 <field name="doctor_id"/>
+                <field name="ref_record"/>
             </tree>
         </field>
     </record>
@@ -22,6 +23,7 @@
                     <group>
                         <field name="doctor_id"/>
                         <field name="ref"/>
+                        <field name="ref_record"/>
                     </group>
                 </sheet>
             </form>
