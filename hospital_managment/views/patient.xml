@@ -8,7 +8,7 @@
                 <tree export_xlsx="0">
 
                     <field name="name"/>
-                    <field name="age"/>
+                    <field name="age" avg="average_age"/>
                     <field name="color" widget="color_picker"/>
                     <field name="color2" widget="color"/>
                     <field name="tag_ids" widget="many2many_tags" options="{
@@ -19,6 +19,7 @@
                     <field name="ref"/>
                     <field name="date_of_birth"/>
                     <field name="gender"/>
+                    <field name="appointments_count" sum="sum_appointments"/>
                 </tree>
             </field>
         </record>
