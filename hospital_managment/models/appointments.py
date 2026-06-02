@@ -8,6 +8,7 @@ class Appointments(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Appointments'
     _rec_name='gender'
+    _order = 'id desc'
 
 
 

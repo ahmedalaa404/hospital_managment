@@ -30,9 +30,8 @@ class HospitalCancelAppointmentWizard(models.TransientModel):
         if allowed_date<Date.today():
             raise ValidationError(_('Cancel appointment date cannot be in the past'))
         self.appointment_id.state='cancel'
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'reload',
+        }
 
-
-
-        # if self.appointment_id.booking_date== fields.Date.today().today():
-        #     raise ValidationError(_("can`t remove any record from db in the same day"))
-        #
