@@ -42,6 +42,11 @@
                                 <field name="active"/>
                                 <field name="active" invisible="1"/>
                                 <field name="gender" widget="radio"/>
+
+
+                                <field name="phone" widget="phone"/>
+                                <field name="email" widget="email"/>
+                                <field name="website"  widget="url"/>
                             </group>
 
                             <group>

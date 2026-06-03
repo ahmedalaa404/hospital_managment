@@ -39,6 +39,13 @@ class Patient(models.Model):
         ('widowed', 'Widowed'),
     ], string="Marital Status")
 
+
+    phone=fields.Char(string="Phone")
+    email=fields.Char(string="email")
+    website=fields.Char(string="website")
+
+
+
     @api.depends('appointments_ids')
     def _compute_appointments_count(self):
         for rec in self:
