@@ -20,7 +20,8 @@
         'views/appointments.xml',
         'views/tag.xml',
         'views/res_config.xml',
-        'views/operation.xml'
+        'views/operation.xml',
+        'views/odoo_playground.xml'
 
     ],
     'description': "",

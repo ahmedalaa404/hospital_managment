@@ -3,3 +3,4 @@ from . import appointments
 from . import hospital_patient_tag
 from . import res_config_settings
 from . import operation
+from . import odoo_playground

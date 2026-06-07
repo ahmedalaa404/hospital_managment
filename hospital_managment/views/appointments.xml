@@ -1,5 +1,7 @@
 <odoo>
     <data>
+
+
         <record id="view_hospital_appointments_list" model="ir.ui.view">
             <field name="name">view of hospital appointments list</field>
             <field name="model">hospital.appointments</field>
@@ -22,6 +24,7 @@
 
                     <field name="appointment_time"/>
                     <field name="booking_date"/>
+                    <field name="status" widget="statusbar"/>
                     <field name="activity_ids" widget="list_activity"/>
                     <button type="object" name="set_done" string="set done"/>
 
@@ -153,6 +156,31 @@
                   parent="mnu_appointments_item"
                   name="appointments"
                   action="actions_hospital_appointments"/>
+
+
+        <record id="action_mark_as_done" model="ir.actions.server">
+            <field name="name">set appointment cancel</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="model_hospital_appointments"/>
+            <field name="binding_model_id" ref="hospital_managment.model_hospital_appointments"/>
+            <!--            <field name="binding_view_types">form</field>-->
+            <field name="code">
+                records.actions_set_status_cancel()
+            </field>
+        </record>
+
+
+    <record id="actions_set_done" model="ir.actions.server">
+        <field name="name">set Done</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="model_hospital_appointments"/>
+        <field name="biniding_model_id" ref="hospital_managment.model_hospital_appointments"/>
+            <field name="code">
+                records.action_set_done()
+            </field>
+    </record>
+
+
     </data>
 
 

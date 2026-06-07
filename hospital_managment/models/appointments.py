@@ -82,6 +82,16 @@ class Appointments(models.Model):
         return action
 
 
+    # functions set specification state
+    def actions_set_status_cancel(self):
+        print("server action")
+        self.write({'status': 'cancel'})
+
+    def action_set_done(self):
+        for rec in self:
+            rec.status = 'done'
+            print(rec)
+
     
 
 class AppointmentsPharmacyLines(models.Model):
