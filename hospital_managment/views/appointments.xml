@@ -1,6 +1,11 @@
 <odoo>
     <data>
+        <record id="view_hospital_appointments_calender" model="ir.ui.view">
+            <field name="name">view of hospital appointments calender</field>
+            <field name="model">hospital.appointments</field>
+            <field name="arch" type="xml">
 
+            </field>
 
         <record id="view_hospital_appointments_list" model="ir.ui.view">
             <field name="name">view of hospital appointments list</field>
