@@ -39,6 +39,7 @@ class Appointments(models.Model):
     )
     Image=fields.Image(string="image" )
     operation_id=fields.Many2one('operation.operation')
+    progress=fields.Integer(string="progress",compute='_compute_progress')
 
 
     hide_from_child=fields.Boolean(string="Hide from Child",default=False)
@@ -92,7 +93,24 @@ class Appointments(models.Model):
             rec.status = 'done'
             print(rec)
 
-    
+    @api.depends('status')
+    def _compute_progress(self):
+        for rec in self:
+            if rec.status=='draft':
+                rec.progress=25
+            elif rec.status=='in_process':
+                rec.progress = 50
+            elif rec.status=='done':
+                rec.progress = 100
+            elif rec.status=='cancel':
+                rec.progress = 0
+
+
+
+
+
+
+
 
 class AppointmentsPharmacyLines(models.Model):
     _name = 'hospital.appointments.pharmacy.lines'

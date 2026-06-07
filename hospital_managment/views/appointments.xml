@@ -23,6 +23,7 @@
 
 
                     <field name="appointment_time"/>
+                    <field name="progress" widget="progressbar"/>
                     <field name="booking_date"/>
                     <field name="status" widget="statusbar"/>
                     <field name="activity_ids" widget="list_activity"/>
@@ -170,15 +171,14 @@
         </record>
 
 
-    <record id="actions_set_done" model="ir.actions.server">
-        <field name="name">set Done</field>
-        <field name="state">code</field>
-        <field name="model_id" ref="model_hospital_appointments"/>
-        <field name="biniding_model_id" ref="hospital_managment.model_hospital_appointments"/>
-            <field name="code">
-                records.action_set_done()
+        <record id="actions_set_done" model="ir.actions.server">
+            <field name="name">set Done</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="model_hospital_appointments"/>
+            <field name="binding_model_id" ref="hospital_managment.model_hospital_appointments"/>
+            <field name="code">records.action_set_done()
             </field>
-    </record>
+        </record>
 
 
     </data>
