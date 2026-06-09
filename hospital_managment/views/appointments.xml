@@ -4,8 +4,26 @@
             <field name="name">view of hospital appointments calender</field>
             <field name="model">hospital.appointments</field>
             <field name="arch" type="xml">
+                <calendar string="calendar"
+                          date_start="booking_date"
+                          date_delay="duration"
+                          color="status"
+                          event_open_popup="True"
+                          quick_add="False"
+                          event_limit="5"
+                          form_view_id="%(hospital_managment.view_hospital_appointments_form)d"
+                          mode="month">
+
+                    <field name="patient_id"
+                           avatar_field="image"
+                           filters="1"
+                           string="name calendar"/>
+                    <field name="name" invisible="1" filters="1"/>
+                    <field name="status" invisible="1" filters="1"/>
+                </calendar>
 
             </field>
+        </record>
 
         <record id="view_hospital_appointments_list" model="ir.ui.view">
             <field name="name">view of hospital appointments list</field>
@@ -147,7 +165,7 @@
         <record id="actions_hospital_appointments" model="ir.actions.act_window">
             <field name="name">hospital</field>
             <field name="res_model">hospital.appointments</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
             <field name="context">{'search_default_filter_with_gender_male':1}</field>
             <field name="help" type="html">
                 <div class="text-warning">

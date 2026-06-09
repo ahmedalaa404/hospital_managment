@@ -1,20 +1,16 @@
 <odoo>
-
     <data>
         <record id="view_hospital_patient_list" model="ir.ui.view">
             <field name="name">view of hospital patient list</field>
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
                 <tree export_xlsx="0">
-
                     <field name="name"/>
                     <field name="age" avg="average_age"/>
                     <field name="color" widget="color_picker"/>
                     <field name="color2" widget="color"/>
                     <field name="tag_ids" widget="many2many_tags" options="{
                                                 'color_field':'color'}"/>
-
-
                     <field name="active" invisible="1"/>
                     <field name="ref"/>
                     <field name="date_of_birth"/>
@@ -46,7 +42,7 @@
 
                                 <field name="phone" widget="phone"/>
                                 <field name="email" widget="email"/>
-                                <field name="website"  widget="url"/>
+                                <field name="website" widget="url"/>
                             </group>
 
                             <group>
@@ -63,7 +59,7 @@
                                 <!--                                attrs="{'invisible':['|',('age','>',20),('gender','=','male')]}"-->
                                 <field name="partner_name" attrs="{'readonly':[('marital_status','!=','married')]}"/>
                                 <field name="marital_status"/>
-<!--                                <field name="tag_ids" widget="many2many_checkboxes"/>-->
+                                <!--                                <field name="tag_ids" widget="many2many_checkboxes"/>-->
 
                             </group>
                         </group>
@@ -108,11 +104,29 @@
             </field>
         </record>
 
+        <record id="hospital_patient_calendar" model="ir.ui.view">
+            <field name="name">calendar of Patient</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <calendar date_start="date_of_birth"
+                          string="patient"
+                          mode="year"
+
+                        >
+                    <field name="name" string="name"/>
+                    <field name="ref"/>
+                    <field name="date_of_birth"/>
+
+                </calendar>
+            </field>
+        </record>
+
+
 
         <record id="actions_hospital_patient" model="ir.actions.act_window">
             <field name="name">hospital</field>
             <field name="res_model">hospital.patient</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
             <field name="context">{'search_default_filter_with_gender_male':1}</field>
             <field name="help" type="html">
                 <div class="text-warning">

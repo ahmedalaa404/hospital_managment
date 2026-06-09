@@ -29,6 +29,7 @@ class Appointments(models.Model):
          ], default='draft',
     )
     Prescription=fields.Html()
+    duration=fields.Integer()
 
     priority=fields.Selection(
         [
