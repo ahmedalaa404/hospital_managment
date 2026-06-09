@@ -31,6 +31,7 @@
                             <group>
                                 <field name="name"/>
                                 <field name="age"/>
+                                <field name="appointments_count"/>
                                 <field name="color" widget="color_picker"/>
                                 <field name="color2" widget="color"/>
                                 <field name="ref"/>

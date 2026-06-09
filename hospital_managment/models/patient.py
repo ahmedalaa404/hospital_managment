@@ -28,7 +28,7 @@ class Patient(models.Model):
     tag_ids = fields.Many2many('hospital.patient.tag')
 
     appointments_ids = fields.One2many('hospital.appointments', 'patient_id', string="Appointments")
-    appointments_count = fields.Integer(string="Appointments Count", compute="_compute_appointments_count", store=True)
+    appointments_count = fields.Integer(string="Appointments Count", compute="_compute_appointments_count", store=False)
 
     parent = fields.Char(string="Parent Patient")
     partner_name = fields.Char(string="partner name")
@@ -48,9 +48,13 @@ class Patient(models.Model):
 
     @api.depends('appointments_ids')
     def _compute_appointments_count(self):
+
         for rec in self:
-            rec.appointments_count = self.env['hospital.appointments'].search_count(
-                [('patient_id', '=', rec.id)])
+          # count_appointments  = self.env['hospital.appointments'].search_count(
+          #       [('patient_id', '=', rec.id)])
+            count_appointments = self.env['hospital.appointments'].read_group(domain=[],fields=[],groupby=['patient_id'])
+            print(count_appointments.get('patient_id')[0])
+            rec.appointments_count=10
 
     @api.model
     def create(self, vals_list):
