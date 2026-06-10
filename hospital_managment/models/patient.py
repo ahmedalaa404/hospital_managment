@@ -1,7 +1,4 @@
-from calendar import month
-
 from odoo import api, fields, models, _
-
 from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta, date
 from dateutil.relativedelta import relativedelta
@@ -52,8 +49,8 @@ class Patient(models.Model):
         for rec in self:
           # count_appointments  = self.env['hospital.appointments'].search_count(
           #       [('patient_id', '=', rec.id)])
-            count_appointments = self.env['hospital.appointments'].read_group(domain=[],fields=[],groupby=['patient_id'])
-            print(count_appointments.get('patient_id')[0])
+          #   count_appointments = self.env['hospital.appointments'].read_group(domain=[],fields=[],groupby=['patient_id'])
+          #   print(count_appointments.get('patient_id')[0])
             rec.appointments_count=10
 
     @api.model

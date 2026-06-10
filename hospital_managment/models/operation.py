@@ -14,6 +14,7 @@ class Operation(models.Model):
         [('hospital.patient', 'patient'),
          ('hospital.appointments', 'appointments')],
         string='record')
+    sequence = fields.Integer(string='Sequence')
 
     @api.model
     def name_create(self, name):
