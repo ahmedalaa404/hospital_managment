@@ -97,6 +97,7 @@
                             <field name="patient_id"/>
                             <field name="gender"/>
                             <field name="ref"/>
+                            <field name="currency_id" invisible="1"/>
                             <field name="appointment_time"/>
                             <field name="hide_from_child" widget="boolean_toggle"/>
                             <field name="doctor_id" widget="many2one_avatar"/>
@@ -116,8 +117,8 @@
                                 <notebook>
                                     <page string="pharmacy" name="pharmacy">
                                         <group>
-                                            <field name="hospital_appointments_pharmacy_lines_ids">
-                                                <tree>
+                                            <field name="hospital_appointments_pharmacy_lines_ids" >
+                                                <tree editable="bottom">
                                                     <field name="name"/>
                                                     <field name="name" groups="base.group_no_one"/>
                                                     <field name="name" groups="base.group_no_one"/>
@@ -125,14 +126,18 @@
                                                     <field name="qty"
                                                            attrs="{'column_invisible':[('parent.hide_from_child','=',False)]}"/>
                                                     <field name="price_unite"/>
+                                                    <field name="company_currency_id" invisible="1" />
+                                                    <field name="price_subtotal"/>
                                                 </tree>
 
-                                                <form>
-                                                    <field name="name"/>
-                                                    <field name="product_id"/>
-                                                    <field name="qty"/>
-                                                    <field name="price_unite"/>
-                                                </form>
+<!--                                                <form>-->
+<!--                                                    <field name="name"/>-->
+<!--                                                    <field name="product_id"/>-->
+<!--                                                    <field name="qty"/>-->
+<!--                                                    <field name="price_unite"/>-->
+
+<!--                                                    <field name="price_subtotal"/>-->
+<!--                                                </form>-->
 
                                             </field>
 

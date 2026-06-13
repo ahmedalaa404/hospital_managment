@@ -1,3 +1,5 @@
+from maxminddb import file
+
 from odoo import fields, models, api,_
 from odoo.api import ondelete
 from odoo.exceptions import ValidationError
@@ -42,10 +44,10 @@ class Appointments(models.Model):
     operation_id=fields.Many2one('operation.operation')
     progress=fields.Integer(string="progress",compute='_compute_progress')
 
-
     hide_from_child=fields.Boolean(string="Hide from Child",default=False)
-
-
+    company_id=fields.Many2one('res.company','company',default=lambda self:self.env.company)
+    # currency_id=fields.Many2one('res.currency','currency',default=lambda self:self.env.company.currency_id)
+    currency_id=fields.Many2one('res.currency','currency',related='company_id.currency_id')
     def unlink(self):
         if self.status=='done':
             raise ValidationError(_("you can`t do it , state is done "))
@@ -122,3 +124,11 @@ class AppointmentsPharmacyLines(models.Model):
     appointments_id = fields.Many2one('hospital.appointments',string="Appointments")
     qty=fields.Integer()
     price_unite=fields.Float(string="Unite Price")
+    company_currency_id=fields.Many2one('res.currency','currency',related='appointments_id.currency_id')
+    price_subtotal=fields.Monetary(string="Subtotal",compute="_compute_price_subtotal",currency_field='company_currency_id')
+
+
+    @api.depends('price_unite','qty')
+    def _compute_price_subtotal(self):
+        for rec in self:
+            rec.price_subtotal = rec.price_unite*rec.qty

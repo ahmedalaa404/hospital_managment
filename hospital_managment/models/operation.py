@@ -18,4 +18,11 @@ class Operation(models.Model):
 
     @api.model
     def name_create(self, name):
-        return self.create({'operation_name': name}).name_get()[0]
+        print(self)
+        print(name)
+        rec=self.create({'operation_name': name})
+
+        print("rec",rec)
+        namme=rec.name_get()[0]
+        print(namme)
+        return namme
