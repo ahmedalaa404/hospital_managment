@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record id="report_appointments_actions" model="ir.actions.act_window">
+            <field name="name">report appointments</field>
+            <field name="res_model">report.appointments</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="form_report_appointments" model="ir.ui.view">
+            <field name="name"> Form of appointments</field>
+            <field name="model">report.appointments</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="patient_id"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="print" type="object"/>
+                        <button special="cancel" string="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <menuitem
+            id="report_appointment_by_patient"
+            name="report appointments"
+            parent="hospital_menu_root"
+            action="report_appointments_actions"
+        />
+
+    </data>
+</odoo>

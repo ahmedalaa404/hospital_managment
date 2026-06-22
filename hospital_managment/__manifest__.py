@@ -13,6 +13,7 @@
         'security/ir.model.access.csv',
         'data/patient_data.xml',
         "wizard/cancel_appointment.xml",
+        "wizard/report_appointment.xml",
         "data/sequence.xml",
         'views/menu.xml',
         'views/patient.xml',
