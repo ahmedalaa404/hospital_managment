@@ -55,11 +55,14 @@ class Appointments(models.Model):
 
     def action_test(self):
         return {
-            'effect': {
-                'message': "test action for rainbow man ",
-                'type': 'rainbow_man',
-                'fadeout': 'slow'
-            }
+            'type':'ir.actions.act_url',
+            'url':'https://www.google.com/',
+
+            # 'effect': {
+            #     'message': "test action for rainbow man ",
+            #     'type': 'rainbow_man',
+            #     'fadeout': 'slow'
+            # }
         }
 
     def set_draft(self):
