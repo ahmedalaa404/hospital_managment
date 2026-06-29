@@ -1,6 +1,4 @@
-from maxminddb import file
-
-from odoo import fields, models, api,_
+from odoo import fields, models, api, _
 from odoo.api import ondelete
 from odoo.exceptions import ValidationError
 
@@ -9,20 +7,18 @@ class Appointments(models.Model):
     _name = 'hospital.appointments'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Appointments'
-    _rec_name='gender'
+    _rec_name = 'gender'
     _order = 'id desc'
-
-
-
 
     name = fields.Char(string="Name", tracking=1)
     patient_id = fields.Many2one('hospital.patient', ondelete='restrict')
     ref = fields.Char(related='patient_id.ref')
     gender = fields.Selection(related='patient_id.gender', string="Gender", readonly=False)
-    appointment_time = fields.Datetime(string="Appointment Time", default=fields.Datetime.now, tracking=1)
-    booking_date = fields.Date(string="Booking Date", tracking=1, default=fields.Date.context_today)
-    doctor_id = fields.Many2one('res.users', string="Doctor", tracking=1)
-    hospital_appointments_pharmacy_lines_ids= fields.One2many('hospital.appointments.pharmacy.lines','appointments_id')
+    appointment_time = fields.Datetime(string="Appointment Time", default=fields.Datetime.now, tracking=30)
+    booking_date = fields.Date(string="Booking Date", tracking=10, default=fields.Date.context_today)
+    doctor_id = fields.Many2one('res.users', string="Doctor", tracking=10)
+    hospital_appointments_pharmacy_lines_ids = fields.One2many('hospital.appointments.pharmacy.lines',
+                                                               'appointments_id')
     status = fields.Selection(
         [('draft', 'Draft'),
          ('in_process', 'In-Process'),
@@ -30,14 +26,14 @@ class Appointments(models.Model):
          ('cancel', 'Cancel'),
          ], default='draft',
     )
-    Prescription=fields.Html()
-    duration=fields.Integer()
+    Prescription = fields.Html()
+    duration = fields.Integer()
 
-    priority=fields.Selection(
+    priority = fields.Selection(
         [
-            ('0','low'),
-            ('1','medium'),
-            ('2','height')
+            ('0', 'low'),
+            ('1', 'medium'),
+            ('2', 'height')
         ]
     )
     Image=fields.Image(string="image" )
@@ -48,6 +44,7 @@ class Appointments(models.Model):
     company_id=fields.Many2one('res.company','company',default=lambda self:self.env.company)
     # currency_id=fields.Many2one('res.currency','currency',default=lambda self:self.env.company.currency_id)
     currency_id=fields.Many2one('res.currency','currency',related='company_id.currency_id')
+
     def unlink(self):
         if self.status=='done':
             raise ValidationError(_("you can`t do it , state is done "))
@@ -55,9 +52,11 @@ class Appointments(models.Model):
 
     def action_test(self):
         return {
-            'type':'ir.actions.act_url',
-            'url':'https://www.google.com/',
+            'type': 'ir.actions.act_url',
+            # 'target' : 'self',
+            # 'target' : 'self',
 
+            'url': 'https://www.google.com'
             # 'effect': {
             #     'message': "test action for rainbow man ",
             #     'type': 'rainbow_man',
@@ -84,8 +83,8 @@ class Appointments(models.Model):
 
     def cancel_appointments(self):
         print(self.env.ref('hospital_managment.action_cancel_appointment_wizard'))
-        action=self.env.ref('hospital_managment.action_cancel_appointment_wizard').read()[0]
-        action['context']={'default_appointment_id':self.id,'hide_appointment_id':1}
+        action = self.env.ref('hospital_managment.action_cancel_appointment_wizard').read()[0]
+        action['context'] = {'default_appointment_id': self.id, 'hide_appointment_id': 1}
         return action
 
 
@@ -102,13 +101,13 @@ class Appointments(models.Model):
     @api.depends('status')
     def _compute_progress(self):
         for rec in self:
-            if rec.status=='draft':
-                rec.progress=25
-            elif rec.status=='in_process':
+            if rec.status == 'draft':
+                rec.progress = 25
+            elif rec.status == 'in_process':
                 rec.progress = 50
-            elif rec.status=='done':
+            elif rec.status == 'done':
                 rec.progress = 100
-            elif rec.status=='cancel':
+            elif rec.status == 'cancel':
                 rec.progress = 0
 
 
@@ -122,7 +121,7 @@ class AppointmentsPharmacyLines(models.Model):
     _name = 'hospital.appointments.pharmacy.lines'
     _description = 'Appointments Pharmacy'
 
-    name=fields.Char(string="Name")
+    name = fields.Char(string="Name")
     product_id = fields.Many2one('product.product')
     appointments_id = fields.Many2one('hospital.appointments',string="Appointments")
     qty=fields.Integer()
@@ -135,3 +134,4 @@ class AppointmentsPharmacyLines(models.Model):
     def _compute_price_subtotal(self):
         for rec in self:
             rec.price_subtotal = rec.price_unite*rec.qty
+
