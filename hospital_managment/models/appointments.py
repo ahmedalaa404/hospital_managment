@@ -36,27 +36,25 @@ class Appointments(models.Model):
             ('2', 'height')
         ]
     )
-    Image=fields.Image(string="image" )
-    operation_id=fields.Many2one('operation.operation')
-    progress=fields.Integer(string="progress",compute='_compute_progress')
+    Image = fields.Image(string="image")
+    operation_id = fields.Many2one('operation.operation')
+    progress = fields.Integer(string="progress", compute='_compute_progress')
 
-    hide_from_child=fields.Boolean(string="Hide from Child",default=False)
-    company_id=fields.Many2one('res.company','company',default=lambda self:self.env.company)
+    hide_from_child = fields.Boolean(string="Hide from Child", default=False)
+    company_id = fields.Many2one('res.company', 'company', default=lambda self: self.env.company)
     # currency_id=fields.Many2one('res.currency','currency',default=lambda self:self.env.company.currency_id)
-    currency_id=fields.Many2one('res.currency','currency',related='company_id.currency_id')
+    currency_id = fields.Many2one('res.currency', 'currency', related='company_id.currency_id')
 
     def unlink(self):
-        if self.status=='done':
+        if self.status == 'done':
             raise ValidationError(_("you can`t do it , state is done "))
         return super().unlink()
 
     def action_test(self):
         return {
             'type': 'ir.actions.act_url',
-            # 'target' : 'self',
-            # 'target' : 'self',
-
-            'url': 'https://www.google.com'
+            'target': '_blank',
+            'url':'www.google.com'
             # 'effect': {
             #     'message': "test action for rainbow man ",
             #     'type': 'rainbow_man',
@@ -80,13 +78,11 @@ class Appointments(models.Model):
         for rec in self:
             rec.status = 'done'
 
-
     def cancel_appointments(self):
         print(self.env.ref('hospital_managment.action_cancel_appointment_wizard'))
         action = self.env.ref('hospital_managment.action_cancel_appointment_wizard').read()[0]
         action['context'] = {'default_appointment_id': self.id, 'hide_appointment_id': 1}
         return action
-
 
     # functions set specification state
     def actions_set_status_cancel(self):
@@ -111,27 +107,20 @@ class Appointments(models.Model):
                 rec.progress = 0
 
 
-
-
-
-
-
-
 class AppointmentsPharmacyLines(models.Model):
     _name = 'hospital.appointments.pharmacy.lines'
     _description = 'Appointments Pharmacy'
 
     name = fields.Char(string="Name")
     product_id = fields.Many2one('product.product')
-    appointments_id = fields.Many2one('hospital.appointments',string="Appointments")
-    qty=fields.Integer()
-    price_unite=fields.Float(string="Unite Price")
-    company_currency_id=fields.Many2one('res.currency','currency',related='appointments_id.currency_id')
-    price_subtotal=fields.Monetary(string="Subtotal",compute="_compute_price_subtotal",currency_field='company_currency_id')
+    appointments_id = fields.Many2one('hospital.appointments', string="Appointments")
+    qty = fields.Integer()
+    price_unite = fields.Float(string="Unite Price")
+    company_currency_id = fields.Many2one('res.currency', 'currency', related='appointments_id.currency_id')
+    price_subtotal = fields.Monetary(string="Subtotal", compute="_compute_price_subtotal",
+                                     currency_field='company_currency_id')
 
-
-    @api.depends('price_unite','qty')
+    @api.depends('price_unite', 'qty')
     def _compute_price_subtotal(self):
         for rec in self:
-            rec.price_subtotal = rec.price_unite*rec.qty
-
+            rec.price_subtotal = rec.price_unite * rec.qty
