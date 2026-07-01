@@ -1,66 +1,5 @@
 <odoo>
     <data>
-        <record id="view_hospital_appointments_calender" model="ir.ui.view">
-            <field name="name">view of hospital appointments calender</field>
-            <field name="model">hospital.appointments</field>
-            <field name="arch" type="xml">
-                <calendar string="calendar"
-                          date_start="booking_date"
-                          date_delay="duration"
-                          color="status"
-                          event_open_popup="True"
-                          quick_add="False"
-                          event_limit="5"
-                          form_view_id="%(hospital_managment.view_hospital_appointments_form)d"
-                          mode="month">
-
-                    <field name="patient_id"
-                           avatar_field="image"
-                           filters="1"
-                           string="name calendar"/>
-                    <field name="name" invisible="1" filters="1"/>
-                    <field name="status" invisible="1" filters="1"/>
-                </calendar>
-
-            </field>
-        </record>
-
-        <record id="view_hospital_appointments_list" model="ir.ui.view">
-            <field name="name">view of hospital appointments list</field>
-            <field name="model">hospital.appointments</field>
-            <field name="arch" type="xml">
-                <tree multi_edit="1" sample="1">
-                    <header>
-                        <button type="object" name="set_done" string="set dones of records"/>
-                    </header>
-                    <field name="name"/>
-                    <field name="patient_id" widget="selection"/>
-                    <field name="ref"/>
-                    <field name="gender"/>
-                    <!--               not open in chat allow to send message -->
-
-                    <field name="doctor_id" widget="many2one_avatar"/>
-
-                    <!--                open in chat allow to send message -->
-                    <field name="doctor_id" widget="many2one_avatar_user"/>
-
-
-                    <field name="appointment_time"/>
-                    <field name="progress" widget="progressbar"/>
-                    <field name="booking_date"/>
-                    <field name="status" widget="statusbar"/>
-                    <field name="activity_ids" widget="list_activity"/>
-                    <button type="object" name="set_done" string="set done"/>
-
-                    <groupby name="patient_id">
-                        <button type="object" class="oe_highlight"
-                                string="click me "
-                                name="action_appear_group_by"/>
-                    </groupby>
-                </tree>
-            </field>
-        </record>
-
 
         <record id="view_hospital_appointments_form" model="ir.ui.view">
             <field name="name">view of hospital appointments form</field>
@@ -83,6 +22,9 @@
 
                         <button type="object" name="cancel_appointments"
                                 string="cancel appointments with function"/>
+
+                        <button type="object" name="test_case"
+                                string="test case"/>
                         <field name="priority" widget="priority"/>
 
                     </header>
@@ -101,7 +43,7 @@
                             <field name="appointment_time"/>
                             <field name="hide_from_child" widget="boolean_toggle"/>
                             <field name="doctor_id" widget="many2one_avatar"/>
-                            <field name="booking_date"/>
+                            <field name="booking_date" decoration-bf="1"/>
                             <field name="Prescription"
                                    options="{'collaborative':true,'resizable':true,'codeview':true}"/>
 
@@ -165,6 +107,71 @@
                 </form>
             </field>
         </record>
+        <record id="view_hospital_appointments_calender" model="ir.ui.view">
+            <field name="name">view of hospital appointments calender</field>
+            <field name="model">hospital.appointments</field>
+            <field name="arch" type="xml">
+                <calendar string="calendar"
+                          date_start="booking_date"
+                          date_delay="duration"
+                          color="status"
+                          event_open_popup="True"
+                          quick_add="False"
+                          event_limit="5"
+                          form_view_id="%(hospital_managment.view_hospital_appointments_form)d"
+                          mode="month">
+
+                    <field name="patient_id"
+                           avatar_field="image"
+                           filters="1"
+                           string="name calendar"/>
+                    <field name="name" invisible="1" filters="1"/>
+                    <field name="status" invisible="1" filters="1"/>
+                </calendar>
+
+            </field>
+        </record>
+
+
+
+        <record id="view_hospital_appointments_list" model="ir.ui.view">
+            <field name="name">view of hospital appointments list</field>
+            <field name="model">hospital.appointments</field>
+            <field name="arch" type="xml">
+                <tree multi_edit="1" sample="1">
+                    <header>
+                        <button type="object" name="set_done" string="set dones of records"/>
+                    </header>
+                    <field name="name"/>
+                    <field name="patient_id" widget="selection"/>
+                    <field name="ref"/>
+<!--                    <field name="gender" decoration-it="1"/>-->
+                    <!--               not open in chat allow to send message -->
+
+                    <field name="doctor_id" widget="many2one_avatar"/>
+
+                    <!--                open in chat allow to send message -->
+                    <field name="doctor_id" widget="many2one_avatar_user"/>
+
+
+                    <field name="appointment_time"/>
+                    <field name="progress" widget="progressbar"/>
+                    <field name="booking_date" decoration-bf="1"/>
+                    <field name="status" widget="statusbar"/>
+                    <field name="activity_ids" widget="list_activity"/>
+                    <button type="object" name="set_done" string="set done"/>
+
+                    <groupby name="patient_id">
+                        <button type="object" class="oe_highlight"
+                                string="click me "
+                                name="action_appear_group_by"/>
+                    </groupby>
+                </tree>
+            </field>
+        </record>
+
+
+
 
 
         <record id="actions_hospital_appointments" model="ir.actions.act_window">

@@ -106,6 +106,11 @@ class Appointments(models.Model):
             elif rec.status == 'cancel':
                 rec.progress = 0
 
+    def test_case(self):
+        data_search_it=self.search([],limit=10,order='id desc')
+        print("Meta Data ->>> ",self.get_metadata()[0])
+        print("search count without Domain have limit and order only",data_search_it)
+        print("Fields Parameter",self.fields_get())
 
 class AppointmentsPharmacyLines(models.Model):
     _name = 'hospital.appointments.pharmacy.lines'
@@ -124,3 +129,14 @@ class AppointmentsPharmacyLines(models.Model):
     def _compute_price_subtotal(self):
         for rec in self:
             rec.price_subtotal = rec.price_unite * rec.qty
+
+
+
+
+    def share_whatsapp(self):
+            return {
+                'type': 'ir.actions.act_url',
+                'target': '_blank',
+                'url': 'url go to for this ',
+            }
+

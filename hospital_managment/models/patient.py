@@ -9,7 +9,7 @@ class Patient(models.Model):
     _description = 'Patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string="Patient Name", required=True)
+    name = fields.Char(string="Patient Name", required=True,trim=True)
     date_of_birth = fields.Date(string="Date of Birth")
     age = fields.Integer(string="age", compute='_compute_calc_age', inverse='_inverse_compute_age',search='_search_age')
     ref = fields.Char(string="Reference", help="This refers to the patient is identity")
