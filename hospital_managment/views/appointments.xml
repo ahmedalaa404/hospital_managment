@@ -20,6 +20,9 @@
                                 string="cancel appointments"/>
 
 
+                        <button type="object" name="share_whatsapp"
+                                string="share whatsapp"/>
+
                         <button type="object" name="cancel_appointments"
                                 string="cancel appointments with function"/>
 

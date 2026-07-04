@@ -106,6 +106,17 @@ class Appointments(models.Model):
             elif rec.status == 'cancel':
                 rec.progress = 0
 
+    def share_whatsapp(self):
+        print("share_whatsapp")
+        if not self.patient_id.phone:
+            raise ValidationError(_('Must be patient have Phone to allow to send message whatsapp'))
+        url_whatsapp_api=f'https://api.whatsapp.com/send?phone={self.patient_id.phone}&text=appointments'
+
+        return {
+            'type':'ir.actions.act_url',
+            'target':'_blank',
+            'url':f"{url_whatsapp_api}"
+        }
     def test_case(self):
         data_search_it=self.search([],limit=10,order='id desc')
         print("Meta Data ->>> ",self.get_metadata()[0])
@@ -139,4 +150,7 @@ class AppointmentsPharmacyLines(models.Model):
                 'target': '_blank',
                 'url': 'url go to for this ',
             }
+
+
+
 
