@@ -54,7 +54,7 @@ class Appointments(models.Model):
         return {
             'type': 'ir.actions.act_url',
             'target': '_blank',
-            'url':'www.google.com'
+            'url': 'www.google.com'
             # 'effect': {
             #     'message': "test action for rainbow man ",
             #     'type': 'rainbow_man',
@@ -110,18 +110,33 @@ class Appointments(models.Model):
         print("share_whatsapp")
         if not self.patient_id.phone:
             raise ValidationError(_('Must be patient have Phone to allow to send message whatsapp'))
-        url_whatsapp_api=f'https://api.whatsapp.com/send?phone={self.patient_id.phone}&text=appointments'
+        url_whatsapp_api = f'https://api.whatsapp.com/send?phone={self.patient_id.phone}&text=appointments'
 
         return {
-            'type':'ir.actions.act_url',
-            'target':'_blank',
-            'url':f"{url_whatsapp_api}"
+            'type': 'ir.actions.act_url',
+            'target': '_blank',
+            'url': f"{url_whatsapp_api}"
         }
+
     def test_case(self):
-        data_search_it=self.search([],limit=10,order='id desc')
-        print("Meta Data ->>> ",self.get_metadata()[0])
-        print("search count without Domain have limit and order only",data_search_it)
-        print("Fields Parameter",self.fields_get())
+        data_search_it = self.search([], limit=10, order='id desc')
+        print("Meta Data ->>> ", self.get_metadata()[0])
+        print("search count without Domain have limit and order only", data_search_it)
+        print("Fields Parameter", self.fields_get())
+
+    def action_notification(self):
+        message = "hellow hambozo"
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'message': message,
+                'type': 'success',
+                'sticky': False
+            }
+        }
+        pass;
+
 
 class AppointmentsPharmacyLines(models.Model):
     _name = 'hospital.appointments.pharmacy.lines'
@@ -131,7 +146,7 @@ class AppointmentsPharmacyLines(models.Model):
     product_id = fields.Many2one('product.product')
     appointments_id = fields.Many2one('hospital.appointments', string="Appointments")
     qty = fields.Integer()
-    price_unite = fields.Float(string="Unite Price")
+    price_unite = fields.Float(string="Unite Price", digits='Discount')
     company_currency_id = fields.Many2one('res.currency', 'currency', related='appointments_id.currency_id')
     price_subtotal = fields.Monetary(string="Subtotal", compute="_compute_price_subtotal",
                                      currency_field='company_currency_id')
@@ -141,16 +156,9 @@ class AppointmentsPharmacyLines(models.Model):
         for rec in self:
             rec.price_subtotal = rec.price_unite * rec.qty
 
-
-
-
     def share_whatsapp(self):
-            return {
-                'type': 'ir.actions.act_url',
-                'target': '_blank',
-                'url': 'url go to for this ',
-            }
-
-
-
-
+        return {
+            'type': 'ir.actions.act_url',
+            'target': '_blank',
+            'url': 'url go to for this ',
+        }
