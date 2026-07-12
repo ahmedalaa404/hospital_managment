@@ -29,6 +29,10 @@
                         <button type="object" name="cancel_appointments"
                                 string="cancel appointments with function"/>
 
+
+                        <button type="object" name="action_notification"
+                                string="action_notification"/>
+
                         <button type="object" name="test_case"
                                 string="test case"/>
                         <field name="priority" widget="priority"/>

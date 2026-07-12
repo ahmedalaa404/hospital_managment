@@ -1,5 +1,4 @@
 from odoo import fields, models, api, _
-from odoo.api import ondelete
 from odoo.exceptions import ValidationError
 
 
@@ -125,17 +124,23 @@ class Appointments(models.Model):
         print("Fields Parameter", self.fields_get())
 
     def action_notification(self):
-        message = "hellow hambozo"
+        print("test notification")
+        action=self.env.ref('hospital_managment.view_hospital_patient_form')
         return {
             'type': 'ir.actions.client',
             'tag': 'display_notification',
             'params': {
-                'message': message,
                 'type': 'success',
-                'sticky': False
+                'message': 'message',
+                'sticky':False,
+                'links':[
+                    {
+                        'label':self.patient_id.id,
+                        'url':f'#action={action.id}&id={self.patient_id.id}&model=hospital.patient'
+                    }
+                ]
             }
         }
-        pass;
 
 
 class AppointmentsPharmacyLines(models.Model):
@@ -156,9 +161,13 @@ class AppointmentsPharmacyLines(models.Model):
         for rec in self:
             rec.price_subtotal = rec.price_unite * rec.qty
 
+
+
+
     def share_whatsapp(self):
         return {
             'type': 'ir.actions.act_url',
             'target': '_blank',
             'url': 'url go to for this ',
         }
+
