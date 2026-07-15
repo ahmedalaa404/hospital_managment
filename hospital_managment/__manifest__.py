@@ -8,6 +8,7 @@
     'depends': [
         'base',
         'product',
+        'report_xlsx',
         'mail'],
     'data': [
         'security/ir.model.access.csv',
